@@ -64,21 +64,6 @@ In this example, the earliest flight is from Tokyo (NRT) at 06:50. An alarm will
 
 ---
 
-## Packaging as an Executable
-
-To create a standalone executable:
-1. Install **PyInstaller**:
-    ```bash
-    pip install pyinstaller
-    ```
-2. Create the executable:
-    ```bash
-    pyinstaller --onefile --add-data "chromedriver.exe;." main.py
-    ```
-3. The executable will be located in the `dist` folder.
-
----
-
 ## Project Structure
 
 ```
