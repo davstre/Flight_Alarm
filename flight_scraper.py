@@ -1,12 +1,12 @@
 import os
+import sys
+import threading
+from datetime import datetime, timedelta
+import time
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
-from datetime import datetime, timedelta
-import time
-import sys
-import threading
 
 # Loading animation class
 class LoadingAnimation:
@@ -57,7 +57,7 @@ def get_alarm_time(flight_date):
         base_url = "https://www.flightstats.com/v2/flight-tracker/arrivals/CRK/"
         dynamic_url = f"{base_url}?year={flight_date.year}&month={flight_date.month}&date={flight_date.day}&hour=6"
         print(f"Scraping flights for CRK at: {dynamic_url}")
-        
+
         # Add loading animation
         with LoadingAnimation("Loading flight data..."):
             driver.get(dynamic_url)
@@ -123,8 +123,7 @@ def get_alarm_time(flight_date):
         if earliest_time:
             alarm_time = earliest_time - timedelta(hours=2)
             return alarm_time.strftime("%H:%M")
-        else:
-            return None
+        return None
 
     finally:
         driver.quit()
